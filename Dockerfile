@@ -6,14 +6,7 @@ ENV ERRBOT_USER="errbot" \
   LC_ALL="C.UTF-8" \
   LANG="en_US.UTF-8" \
   LANGUAGE="en_US.UTF-8" \
-  BACKEND="Text" \
-  BOT_ADMINS="''" \
-  BOT_NAME="Errbot" \
   CONFIG="/srv/config.py" \
-  DATA_DIR="/srv/data" \
-  EXTRA_PLUGIN_DIR="/srv/plugins" \
-  EXTRA_BACKEND_DIR="/srv/errbackends" \
-  TOKEN=""
 
 # Add errbot user and group
 RUN addgroup -S $ERRBOT_USER && \
@@ -43,7 +36,7 @@ RUN mkdir \
   /app
 
 # Copy configuration and support scripts
-COPY defaults/config.py.template /tmp/
+COPY defaults/config-template.py /srv/config.py
 COPY bin/* /app/
 VOLUME ["/srv"]
 WORKDIR /app

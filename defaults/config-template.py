@@ -63,7 +63,7 @@ import logging
 
 # The location where all of Err's data should be stored. Make sure to set
 # this to a directory that is writable by the user running the bot.
-BOT_DATA_DIR = '/var/lib/err'
+BOT_DATA_DIR = '/srv/data'
 
 ### Repos and plugins config.
 
@@ -82,11 +82,11 @@ BOT_DATA_DIR = '/var/lib/err'
 # locally before publishing it. Note that you can specify only a single
 # directory, however you are free to create subdirectories with multiple
 # plugins inside this directory.
-BOT_EXTRA_PLUGIN_DIR = None
+BOT_EXTRA_PLUGIN_DIR = '/srv/plugins'
 
 # If you use an external backend as a plugin,
 # this is where you tell Errbot where to find it.
-# BOT_EXTRA_BACKEND_DIR = '/opt/errbackends'
+BOT_EXTRA_BACKEND_DIR = '/srv/errbackends'
 
 # If you want only a subset of the core plugins that are bundled with errbot, you can specify them here.
 # CORE_PLUGINS = None # This is default, all core plugins.
@@ -143,8 +143,8 @@ SENTRY_LOGLEVEL = BOT_LOG_LEVEL
 # The identity, or credentials, used to connect to a server
 BOT_IDENTITY = {
     # XMPP (Jabber) mode
-    'username': 'err@localhost',  # The JID of the user you have created for the bot
-    'password': 'changeme',       # The corresponding password for this user
+    # 'username': 'err@localhost',  # The JID of the user you have created for the bot
+    # 'password': 'changeme',       # The corresponding password for this user
     # 'server': ('host.domain.tld',5222), # server override
 
     ## HipChat mode (Comment the above if using this mode)
@@ -185,7 +185,7 @@ BOT_IDENTITY = {
 #
 # Unix-style glob patterns are supported, so 'gbin@localhost'
 # would be considered an admin if setting '*@localhost'.
-BOT_ADMINS = ('gbin@localhost',)
+BOT_ADMINS = ('nobody',)
 
 # Chatrooms your bot should join on startup. For the IRC backend you
 # should include the # sign here. For XMPP rooms that are password
