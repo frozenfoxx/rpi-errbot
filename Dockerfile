@@ -7,10 +7,13 @@ ENV ERRBOT_USER="errbot" \
   LANG="en_US.UTF-8" \
   LANGUAGE="en_US.UTF-8" \
   BACKEND="Text" \
+  BOT_ADMINS="''" \
+  BOT_NAME="Errbot" \
   CONFIG="/srv/config.py" \
   DATA_DIR="/srv/data" \
   EXTRA_PLUGIN_DIR="/srv/plugins" \
-  EXTRA_BACKEND_DIR="/srv/errbackends"
+  EXTRA_BACKEND_DIR="/srv/errbackends" \
+  TOKEN=""
 
 # Add errbot user and group
 RUN groupadd -r $ERRBOT_USER && \
