@@ -148,11 +148,8 @@ BOT_IDENTITY = {
     ## of HipChat then you may leave this commented out.
     # 'endpoint' : 'https://api.hipchat.com'
 
-    ## Slack mode (comment the others above if using this mode)
-    # 'token': 'xoxb-4426949411-aEM7...',
-
-    ## Telegram mode (comment the others above if using this mode)
-    # 'token': '103419016:AAbcd1234...',
+    ## Slack / Telegram mode (comment the others above if using this mode)
+    'token': "${TOKEN}"
 
     ## IRC mode (Comment the others above if using this mode)
     # 'nickname' : 'err-chatbot',
