@@ -3,9 +3,14 @@ MAINTAINER FOXX <frozenfoxx@github.com>
 
 # Set up environment variables
 ENV ERRBOT_USER="errbot" \
-    LC_ALL="C.UTF-8" \
-    LANG="en_US.UTF-8" \
-    LANGUAGE="en_US.UTF-8"
+  LC_ALL="C.UTF-8" \
+  LANG="en_US.UTF-8" \
+  LANGUAGE="en_US.UTF-8" \
+  BACKEND="Text" \
+  CONFIG="/srv/config.py" \
+  DATA_DIR="/srv/data" \
+  EXTRA_PLUGIN_DIR="/srv/plugins" \
+  EXTRA_BACKEND_DIR="/srv/errbackends"
 
 # Add errbot user and group
 RUN groupadd -r $ERRBOT_USER && \
@@ -19,7 +24,8 @@ RUN apk -U add \
     build-base \
     libffi-dev \
     openssl-dev \
-    python3-dev && \
+    python3-dev \
+    su-exec && \
   locale-gen C.UTF-8 && \
   /usr/sbin/update-locale LANG=C.UTF-8 && \
   echo 'en_US.UTF-8 UTF-8' >> /etc/locale.gen && \
@@ -28,25 +34,22 @@ RUN apk -U add \
     errbot
 
 # Create directories
-RUN mkdir /srv \
-    /srv/data \
-    /srv/plugins \
-    /srv/errbackends \
-    /app && \
-  chown -R $ERRBOT_USER:$ERRBOT_USER /srv /app
-
-# Initialize Errbot
-USER $ERRBOT_USER
-WORKDIR /app
-RUN errbot --init
+RUN mkdir \
+  /srv \
+  /srv/data \
+  /srv/plugins \
+  /srv/errbackends \
+  /app
 
 # Copy configuration and support scripts
-COPY defaults/config.py /srv/config.py
-COPY bin/errbot.sh /app/errbot.sh
+COPY defaults/config.py.template /app/
+COPY bin/* /app/
+VOLUME ["/srv"]
+WORKDIR /app
+RUN chown -R $ERRBOT_USER:$ERRBOT_USER /srv /app
 
 # Expose network ports for webserver (if enabled)
 EXPOSE 3141 3142
-VOLUME ["/srv"]
 
-# Entry
-CMD ["/app/errbot.sh"]
+# Run the server
+ENTRYPOINT /app/errbot-server
