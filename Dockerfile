@@ -1,5 +1,5 @@
 FROM arm32v6/python:3-alpine3.6
-MAINTAINER FOXX <frozenfoxx@github.com>
+MAINTAINER FrozenFOXX <frozenfoxx@github.com>
 
 # Set up environment variables
 ENV ERRBOT_USER="errbot" \
