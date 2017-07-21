@@ -31,10 +31,7 @@ RUN apk -U add \
     openssl-dev \
     python3-dev \
     su-exec && \
-  locale-gen C.UTF-8 && \
-  /usr/sbin/update-locale LANG=C.UTF-8 && \
   echo 'en_US.UTF-8 UTF-8' >> /etc/locale.gen && \
-  locale-gen && \
   pip3 install -U \
     errbot
 
