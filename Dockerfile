@@ -16,8 +16,8 @@ ENV ERRBOT_USER="errbot" \
   TOKEN=""
 
 # Add errbot user and group
-RUN groupadd -r $ERRBOT_USER && \
-  useradd -r \
+RUN addgroup -S $ERRBOT_USER && \
+  adduser -S \
     -g $ERRBOT_USER \
     -d /app \
     $ERRBOT_USER
