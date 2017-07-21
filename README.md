@@ -54,4 +54,4 @@ This image can be configured using environment variables.
 * `DATA_DIR`: filesystem location for Errbot data.
 * `EXTRA_PLUGIN_DIR`: filesystem location for extra plugins.
 * `EXTRA_BACKEND_DIR`: filesystem location for extra backends.
-* `TOKEN`: integration plugin (Slack/Telegram)
+* `TOKEN`: integration token (Slack/Telegram)
