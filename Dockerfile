@@ -42,7 +42,7 @@ RUN mkdir \
   /app
 
 # Copy configuration and support scripts
-COPY defaults/config.py.template /app/
+COPY defaults/config.py.template /tmp/
 COPY bin/* /app/
 VOLUME ["/srv"]
 WORKDIR /app
