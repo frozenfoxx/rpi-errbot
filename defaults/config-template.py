@@ -44,7 +44,7 @@ import logging
 # 'Telegram' - cloud-based mobile and desktop messaging app with a focus
 #              on security and speed. (https://telegram.org/)
 
-# BACKEND = 'XMPP'  # defaults to XMPP
+BACKEND = 'Text'  # defaults to Text
 
 # STORAGE selection.
 # This configures the type of persistence you wish to use Errbot with.
