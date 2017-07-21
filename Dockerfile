@@ -15,7 +15,11 @@ RUN groupadd -r $ERRBOT_USER && \
     $ERRBOT_USER
 
 # Install requirements
-RUN apk -U && \
+RUN apk -U add \
+    build-base \
+    libffi-dev \
+    openssl-dev \
+    python3-dev && \
   locale-gen C.UTF-8 && \
   /usr/sbin/update-locale LANG=C.UTF-8 && \
   echo 'en_US.UTF-8 UTF-8' >> /etc/locale.gen && \
@@ -25,6 +29,7 @@ RUN apk -U && \
 
 # Create directories
 RUN mkdir /srv \
+    /srv/data \
     /srv/plugins \
     /srv/errbackends \
     /app && \
