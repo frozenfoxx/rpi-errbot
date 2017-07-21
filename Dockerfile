@@ -37,7 +37,6 @@ RUN apk -U add \
 
 # Create directories
 RUN mkdir \
-  /srv \
   /srv/data \
   /srv/plugins \
   /srv/errbackends \
