@@ -1,0 +1,14 @@
+#!/bin/ash
+
+# This loop reads the config.py.template file and generates a config.py
+if [ ! -f "${CONFIG}" ]; then
+  echo "[+] Generating config.py..."
+    while read SETTING
+      do
+        eval echo "${SETTING}"
+      done < /tmp/config.py.template > "${CONFIG}"
+  echo "[+] Done."
+fi
+
+# Run the server
+/sbin/su-exec ${ERRBOT_USER} errbot --config ${CONFIG}
