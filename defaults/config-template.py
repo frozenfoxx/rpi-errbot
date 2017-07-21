@@ -1,8 +1,18 @@
 ##########################################################################
 #                                                                        #
-#  This is the config.py.template for Err. This file is read and used to #
-#  generate a config.py on startup if a config.py is not already         #
-#  available.                                                            #
+#  This is the config-template for Err. This file should be copied and   #
+#  renamed to config.py, then modified as you see fit to run Errbot      #
+#  the way you like it.                                                  #
+#                                                                        #
+#  As this is a regular Python file, note that you can do variable       #
+#  assignments and the likes as usual. This can be useful for example if #
+#  you use the same values in multiple places.                           #
+#                                                                        #
+#  Note: Various config options require a tuple to be specified, even    #
+#  when you are configuring only a single value. An example of this is   #
+#  the BOT_ADMINS option. Make sure you use a valid tuple here, even if  #
+#  you are only configuring a single item, else you will get errors.     #
+#  (So don't forget the trailing ',' in these cases)                     #
 #                                                                        #
 ##########################################################################
 
@@ -34,7 +44,7 @@ import logging
 # 'Telegram' - cloud-based mobile and desktop messaging app with a focus
 #              on security and speed. (https://telegram.org/)
 
-BACKEND = "${BACKEND}"
+# BACKEND = 'XMPP'  # defaults to XMPP
 
 # STORAGE selection.
 # This configures the type of persistence you wish to use Errbot with.
@@ -53,7 +63,7 @@ BACKEND = "${BACKEND}"
 
 # The location where all of Err's data should be stored. Make sure to set
 # this to a directory that is writable by the user running the bot.
-BOT_DATA_DIR = "${DATA_DIR}"
+BOT_DATA_DIR = '/var/lib/err'
 
 ### Repos and plugins config.
 
@@ -72,11 +82,11 @@ BOT_DATA_DIR = "${DATA_DIR}"
 # locally before publishing it. Note that you can specify only a single
 # directory, however you are free to create subdirectories with multiple
 # plugins inside this directory.
-BOT_EXTRA_PLUGIN_DIR = "${EXTRA_PLUGIN_DIR}"
+BOT_EXTRA_PLUGIN_DIR = None
 
 # If you use an external backend as a plugin,
 # this is where you tell Errbot where to find it.
-BOT_EXTRA_BACKEND_DIR = "${EXTRA_BACKEND_DIR}"
+# BOT_EXTRA_BACKEND_DIR = '/opt/errbackends'
 
 # If you want only a subset of the core plugins that are bundled with errbot, you can specify them here.
 # CORE_PLUGINS = None # This is default, all core plugins.
@@ -133,8 +143,8 @@ SENTRY_LOGLEVEL = BOT_LOG_LEVEL
 # The identity, or credentials, used to connect to a server
 BOT_IDENTITY = {
     # XMPP (Jabber) mode
-    # 'username': 'err@localhost',  # The JID of the user you have created for the bot
-    # 'password': 'changeme',       # The corresponding password for this user
+    'username': 'err@localhost',  # The JID of the user you have created for the bot
+    'password': 'changeme',       # The corresponding password for this user
     # 'server': ('host.domain.tld',5222), # server override
 
     ## HipChat mode (Comment the above if using this mode)
@@ -148,8 +158,11 @@ BOT_IDENTITY = {
     ## of HipChat then you may leave this commented out.
     # 'endpoint' : 'https://api.hipchat.com'
 
-    ## Slack / Telegram mode (comment the others above if using this mode)
-    'token': "${TOKEN}"
+    ## Slack mode (comment the others above if using this mode)
+    # 'token': 'xoxb-4426949411-aEM7...',
+
+    ## Telegram mode (comment the others above if using this mode)
+    # 'token': '103419016:AAbcd1234...',
 
     ## IRC mode (Comment the others above if using this mode)
     # 'nickname' : 'err-chatbot',
@@ -172,10 +185,7 @@ BOT_IDENTITY = {
 #
 # Unix-style glob patterns are supported, so 'gbin@localhost'
 # would be considered an admin if setting '*@localhost'.
-BOT_ADMINS = (${BOT_ADMINS},)
-
-# Set of admins that wish to receive administrative bot notifications.
-#BOT_ADMINS_NOTIFICATIONS = ()
+BOT_ADMINS = ('gbin@localhost',)
 
 # Chatrooms your bot should join on startup. For the IRC backend you
 # should include the # sign here. For XMPP rooms that are password
@@ -188,7 +198,7 @@ BOT_ADMINS = (${BOT_ADMINS},)
 # implementations, notably HipChat, are very picky about what name you
 # use. In the case of HipChat, make sure this matches exactly with the
 # name you gave the user.
-CHATROOM_FN = "${BOT_NAME}"
+# CHATROOM_FN = 'Errbot'
 
 ##########################################################################
 # Prefix configuration                                                   #
@@ -280,11 +290,6 @@ CHATROOM_FN = "${BOT_NAME}"
 # the command was given in a MUC. For example:
 # DIVERT_TO_PRIVATE = ('help', 'about', 'status')
 DIVERT_TO_PRIVATE = ()
-
-# A list of commands which should be responded to in a thread if the backend supports it.
-# For example:
-# DIVERT_TO_THREAD = ('help', 'about', 'status')
-DIVERT_TO_THREAD = ()
 
 # Chat relay
 # Can be used to relay one to one message from specific users to the bot
