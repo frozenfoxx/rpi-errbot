@@ -6,7 +6,7 @@ ENV ERRBOT_USER="errbot" \
   LC_ALL="C.UTF-8" \
   LANG="en_US.UTF-8" \
   LANGUAGE="en_US.UTF-8" \
-  CONFIG="/srv/config.py" \
+  CONFIG="/srv/config.py"
 
 # Add errbot user and group
 RUN addgroup -S $ERRBOT_USER && \
