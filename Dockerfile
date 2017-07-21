@@ -19,7 +19,9 @@ ENV ERRBOT_USER="errbot" \
 RUN addgroup -S $ERRBOT_USER && \
   adduser -S \
     -g $ERRBOT_USER \
-    -d /app \
+    -D \
+    -H \
+    -h /app \
     $ERRBOT_USER
 
 # Install requirements
