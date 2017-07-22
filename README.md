@@ -36,7 +36,7 @@ You can then mount this container using `--volumes-from`:
 
 ```
 docker run -d --name=errbot_server \
-  --volumes-from errbot_data \
+  -volumes errbot_data:/srv \
   frozenfoxx/rpi-errbot
 ```
 
