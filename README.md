@@ -49,3 +49,10 @@ This image can be configured using environment variables.
 * `LANG`: default language.
 * `LANGUAGE`: default system language.
 * `CONFIG`: filesystem location for the main Errbot configuration file.
+
+## Backends
+Current backends built into this image:
+* Slack
+* Text
+
+More can be added via inserting them into the packages to be installed via `pip3` in the `Dockerfile`.
