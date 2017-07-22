@@ -27,7 +27,8 @@ RUN apk -U add \
   echo 'en_US.UTF-8 UTF-8' >> /etc/locale.gen && \
   pip3 install -U \
     errbot \
-    errbot[slack]
+    errbot[slack] \
+    slackclient
 
 # Create directories
 RUN mkdir \
