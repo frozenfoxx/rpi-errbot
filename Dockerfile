@@ -38,9 +38,10 @@ RUN mkdir \
 # Copy configuration and support scripts
 COPY defaults/config-template.py /srv/config.py
 COPY bin/* /app/
-VOLUME ["/srv"]
 WORKDIR /app
-RUN chown -R $ERRBOT_USER:$ERRBOT_USER /srv /app
+RUN chown -R ${ERRBOT_USER}:${ERRBOT_USER} /srv /app
+
+VOLUME ["/srv"]
 
 # Expose network ports for webserver (if enabled)
 EXPOSE 3141 3142
