@@ -20,6 +20,7 @@ RUN addgroup -S $ERRBOT_USER && \
 # Install requirements
 RUN apk -U add \
     build-base \
+    git \
     libffi-dev \
     openssl-dev \
     python3-dev \
